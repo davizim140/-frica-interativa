@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#153d3a"><title>África em Movimento — Mapa Interativo</title>
+<style>
+:root{--bg:#dcebe4;--ink:#173532;--paper:#fffaf0;--gold:#e6ad55}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(ellipse at 50% 20%,#f2f1df,#c4ded7 70%,#a7c9c3);min-height:100vh}
+header{text-align:center;padding:28px 18px 12px}.tag{font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#56746a}h1{font:700 clamp(2rem,5vw,3.5rem) Georgia,serif;margin:8px 0}header p{margin:0 auto;max-width:650px;color:#45625c}
+main{width:min(1100px,94vw);margin:16px auto 44px;display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:center}
+.map-area{padding:20px 0 38px;perspective:1000px}.map3d{transform:rotateX(52deg) rotateZ(-7deg);transform-style:preserve-3d;filter:drop-shadow(0 28px 17px #244c4660);transition:transform .4s}
+svg{display:block;width:100%;height:auto;overflow:visible}.region{cursor:pointer;stroke:#fff0cf;stroke-width:3;stroke-linejoin:round;transition:filter .25s,transform .35s;transform-box:fill-box;transform-origin:center;outline:none}.region:hover,.region:focus{filter:brightness(1.15) drop-shadow(0 8px 5px #17353266)}.region.active{filter:brightness(1.18) drop-shadow(0 17px 8px #17353288);transform:translateY(-22px)}
+.region-label{pointer-events:none;text-anchor:middle;font:800 17px system-ui;fill:#193c37;paint-order:stroke;stroke:#fff0cf;stroke-width:4px;stroke-linejoin:round}.hint{text-align:center;margin-top:-12px;font-size:.75rem;letter-spacing:.1em;color:#58736c}
+.panel{background:var(--paper);border:1px solid #fff;border-radius:22px;padding:25px;box-shadow:0 18px 45px #355d5b25;min-height:390px;position:relative}.panel:before{content:"";position:absolute;top:0;left:25px;right:25px;height:5px;border-radius:0 0 8px 8px;background:linear-gradient(90deg,#d47c43,#e9b54e,#78a989)}
+.kicker{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;font-weight:800;color:#987b4f;margin-top:7px}h2{font:700 1.6rem Georgia,serif;margin:9px 0 16px}.question{font-size:1.03rem;font-weight:650;line-height:1.5;margin-bottom:17px}.answers{display:grid;gap:9px}.answer{border:1.5px solid #e4d9c5;background:#fff;border-radius:12px;padding:12px 14px;text-align:left;font:500 .92rem/1.4 system-ui;color:var(--ink);cursor:pointer;transition:.18s}.answer:hover:not(:disabled){border-color:#bd8741;background:#fff8e9;transform:translateX(3px)}.answer:disabled{opacity:1;cursor:default}.answer.correct{background:#e2f1df;border-color:#6eaa70}.answer.wrong{background:#fae4dc;border-color:#d77b62}.feedback{min-height:48px;margin:14px 0 0;font-size:.9rem;font-weight:700;line-height:1.45}.good{color:#367846}.bad{color:#a64b36}.actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}.muted{font-size:.78rem;color:#718078}.reset{border:0;border-radius:99px;background:#244b43;color:white;padding:10px 15px;font-weight:700;cursor:pointer}.reset:hover{background:#37675b}.empty{min-height:320px;display:grid;place-items:center;text-align:center;color:#718078}.empty .globe{font-size:3rem}.score{display:flex;justify-content:space-between;border-top:1px solid #e9dfce;padding-top:14px;margin-top:18px;font-size:.82rem;color:#66756e}.score strong{color:#173532}
+@media(max-width:760px){main{grid-template-columns:1fr;gap:6px;margin-top:4px}.map-area{padding:8px 0 27px}.panel{min-height:0}header{padding-top:20px}.hint{margin-top:-6px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="tag">Geografia • História • Desafio interativo</div><h1>África em Movimento</h1><p>Explore as quatro regiões do mapa. Toque em uma área para elevá-la e responder à pergunta correspondente.</p></header>
+<main>
+<section class="map-area" aria-label="Mapa interativo da África">
+<div class="map3d"><svg viewBox="0 0 620 650" role="group" aria-label="Mapa esquemático da África dividido em quatro regiões">
+<defs><clipPath id="continent"><path d="M170 54 244 38 315 56 368 91 425 112 455 155 480 195 469 235 490 269 465 312 452 352 427 391 407 445 382 493 355 548 325 595 294 622 270 600 247 561 223 522 201 484 177 449 150 417 131 382 111 343 94 305 77 264 82 224 102 190 119 151 137 112Z"/></clipPath>
+<linearGradient id="n" x2="1" y2="1"><stop stop-color="#f2c879"/><stop offset="1" stop-color="#d98c4b"/></linearGradient><linearGradient id="w" x2="1" y2="1"><stop stop-color="#9ac38f"/><stop offset="1" stop-color="#4d927a"/></linearGradient><linearGradient id="e" x2="1" y2="1"><stop stop-color="#8bc4c7"/><stop offset="1" stop-color="#438b9b"/></linearGradient><linearGradient id="s" x2="1" y2="1"><stop stop-color="#c997b7"/><stop offset="1" stop-color="#93648e"/></linearGradient></defs>
+<path d="M170 54 244 38 315 56 368 91 425 112 455 155 480 195 469 235 490 269 465 312 452 352 427 391 407 445 382 493 355 548 325 595 294 622 270 600 247 561 223 522 201 484 177 449 150 417 131 382 111 343 94 305 77 264 82 224 102 190 119 151 137 112Z" fill="#315c53" opacity=".42" transform="translate(0 14)"/>
+<g clip-path="url(#continent)">
+<rect x="50" y="20" width="480" height="640" fill="#e7d6b4"/>
+<path class="region" data-i="0" tabindex="0" role="button" aria-label="Região 1 Norte" fill="url(#n)" d="M50 20H530V225L420 244 330 225 240 238 155 222 75 245Z"/>
+<path class="region" data-i="1" tabindex="0" role="button" aria-label="Região 2 Oeste" fill="url(#w)" d="M50 210 155 205 240 230 285 300 265 380 225 460 180 470 140 415 105 345 70 280Z"/>
+<path class="region" data-i="2" tabindex="0" role="button" aria-label="Região 3 Leste e Central" fill="url(#e)" d="M240 225 330 215 420 235 510 205 530 330 455 405 410 455 335 450 265 390 285 300Z"/>
+<path class="region" data-i="3" tabindex="0" role="button" aria-label="Região 4 Sul" fill="url(#s)" d="M180 450 225 430 265 390 335 445 410 455 390 520 355 570 325 640 245 640 215 560Z"/>
+<path d="M55 225H525M240 225 265 390M285 300 265 390M225 430 335 445M410 455 455 405" fill="none" stroke="#fff0cf" stroke-width="3"/>
+</g>
+<path d="M170 54 244 38 315 56 368 91 425 112 455 155 480 195 469 235 490 269 465 312 452 352 427 391 407 445 382 493 355 548 325 595 294 622 270 600 247 561 223 522 201 484 177 449 150 417 131 382 111 343 94 305 77 264 82 224 102 190 119 151 137 112Z" fill="none" stroke="#fff0cf" stroke-width="5"/>
+<text class="region-label" x="282" y="156">NORTE</text><text class="region-label" x="159" y="326">OESTE</text><text class="region-label" x="367" y="331">LESTE / CENTRAL</text><text class="region-label" x="300" y="516">SUL</text>
+</svg></div><div class="hint">MAPA ESQUEMÁTICO • CLIQUE EM UMA REGIÃO</div>
+</section>
+<section class="panel" aria-live="polite"><div id="questionArea"><div class="empty"><div><div class="globe">🌍</div><h2>Escolha uma região</h2><p>As áreas coloridas representam as quatro regiões do desafio.</p></div></div></div><div class="score"><span>Respondidas: <strong id="done">0/4</strong></span><span>Acertos: <strong id="points">0</strong></span></div></section>
+</main>
+<script>
+const qs=[
+{name:"Região 1 — Norte",q:"Qual fator geopolítico externo enfraqueceu o domínio europeu após 1945?",a:["A) A expansão do comércio transaariano","B) Segunda Guerra Mundial","C) A criação da União Europeia","D) A descoberta de petróleo no continente"],c:1,why:"A Segunda Guerra Mundial enfraqueceu as potências europeias econômica e politicamente, acelerando a descolonização."},
+{name:"Região 2 — Oeste",q:"O que foi o Pan-Africanismo?",a:["A) Um acordo comercial entre países europeus","B) Um projeto de divisão territorial da África","C) Movimento de união e solidariedade entre povos africanos","D) Uma política de expansão colonial"],c:2,why:"O Pan-Africanismo defendeu a união, a solidariedade e a valorização dos povos africanos e de suas diásporas."},
+{name:"Região 3 — Leste/Central",q:"Quem foi Kwame Nkrumah?",a:["A) Um administrador colonial britânico","B) Líder da independência de Gana e cofundador da OUA","C) O primeiro presidente da África do Sul democrática","D) Um líder da independência da Argélia"],c:1,why:"Kwame Nkrumah liderou a independência de Gana, em 1957, e foi um dos principais defensores da unidade africana e da criação da OUA."},
+{name:"Região 4 — Sul",q:"A independência africana ocorreu principalmente porque:",a:["A) As metrópoles decidiram abandonar todas as colônias espontaneamente","B) Houve crise dos colonizadores aliada à luta africana","C) As fronteiras coloniais deixaram de existir após 1945","D) A ONU assumiu diretamente o governo dos territórios"],c:1,why:"A descolonização resultou da combinação entre o enfraquecimento das potências coloniais e as lutas políticas, sociais e armadas dos próprios africanos."}
+];
+let current=-1;const answered=new Set(),correct=new Set(),wrong={};const regions=[...document.querySelectorAll(".region")],area=document.getElementById("questionArea");
+function selectRegion(i){current=i;regions.forEach((r,n)=>r.classList.toggle("active",n===i));render()}
+function render(){const q=qs[current],done=answered.has(current);area.innerHTML='<div class="kicker">Desafio regional</div><h2>'+q.name+'</h2><div class="question">'+q.q+'</div><div class="answers">'+q.a.map((a,i)=>'<button class="answer" data-a="'+i+'" '+(done?'disabled':'')+'>'+a+'</button>').join('')+'</div><div class="feedback" id="feedback">'+(done?(correct.has(current)?'✓ Correto! ':'✕ Resposta registrada. ')+q.why:'Selecione uma alternativa para conferir sua resposta.')+'</div><div class="actions"><span class="muted">'+(done?'Região concluída':'Uma tentativa por região')+'</span><button class="reset" id="reset">Refazer região</button></div>';
+area.querySelectorAll(".answer").forEach(b=>b.addEventListener("click",()=>check(+b.dataset.a)));document.getElementById("reset").addEventListener("click",()=>{answered.delete(current);correct.delete(current);delete wrong[current];render();score()});
+if(done)area.querySelectorAll(".answer").forEach((b,i)=>{if(i===q.c)b.classList.add("correct");else if(!correct.has(current)&&i===wrong[current])b.classList.add("wrong")});
+}
+function check(n){if(answered.has(current))return;const q=qs[current],ok=n===q.c;answered.add(current);if(ok)correct.add(current);else wrong[current]=n;area.querySelectorAll(".answer").forEach((b,i)=>{b.disabled=true;if(i===q.c)b.classList.add("correct");else if(i===n)b.classList.add("wrong")});const f=document.getElementById("feedback");f.className="feedback "+(ok?"good":"bad");f.textContent=(ok?"✓ Muito bem! ":"✕ Não foi dessa vez. ")+q.why;area.querySelector(".muted").textContent="Região concluída";score()}
+function score(){document.getElementById("done").textContent=answered.size+"/4";document.getElementById("points").textContent=correct.size}
+regions.forEach((r,i)=>{r.addEventListener("click",()=>selectRegion(i));r.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectRegion(i)}})});
+</script></body></html>
