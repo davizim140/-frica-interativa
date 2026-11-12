@@ -16,6 +16,27 @@ main{width:min(1150px,94vw);margin:30px auto 60px}.intro{display:flex;justify-co
 .q-kicker{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:800}.q-title{font-size:1.05rem;margin:4px 0 8px}.q-text{font-size:.94rem;font-weight:650;margin:0 0 11px}.options{display:grid;grid-template-columns:1fr 1fr;gap:8px}.option{border:1px solid #2b4142;background:#101a1c;color:#dce9e6;padding:13px 15px;text-align:left;border-radius:10px;cursor:pointer;font:500 .9rem/1.45 inherit;transition:.2s}.option:hover:not(:disabled){border-color:var(--cyan);background:#132728;transform:translateY(-2px)}.option:disabled{cursor:default;opacity:1}.option.correct{border-color:#6ddc8d;background:#10271b;color:#b9ffc8}.option.wrong{border-color:#e68173;background:#2b1717;color:#ffc1b9}.feedback{min-height:28px;margin:14px 0 0;font-size:.9rem;font-weight:700}.feedback.good{color:var(--green)}.feedback.bad{color:var(--red)}.bottom-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:8px}.reset{border:1px solid #365254;background:transparent;color:#b8ceca;border-radius:8px;padding:9px 13px;cursor:pointer}.reset:hover{border-color:var(--cyan);color:white}.hint{color:#829795;font-size:.75rem}
 @media(max-width:700px){header{padding:18px 4vw}.status{display:none}main{margin-top:20px}.intro{display:block}.intro p{margin-top:8px}.map-stage{min-height:510px;padding:15px 4px}.map3d{transform:rotateX(12deg) rotateZ(-2deg)}.map3d.zoomed{width:145%;transform:rotateX(0) scale(1.08)}.options{grid-template-columns:1fr}.question-area{bottom:12px;padding:13px 14px;width:calc(100% - 20px);max-height:68%}.option{padding:10px 12px}.map-head,.map-footer{font-size:.65rem}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Watch Dogs monochrome map presentation */
+body{background:#020303;color:#e8e8e8}
+header,.intro,.map-head,.map-footer{display:none!important}
+main{width:100%;margin:0;max-width:none}
+.workspace{border:0;border-radius:0;background:#020303;box-shadow:none;min-height:100vh}
+.map-stage{min-height:100vh;padding:20px 8px;background:radial-gradient(ellipse at 50% 48%,#25292a 0, #101213 48%,#020303 100%)}
+.map3d{filter:grayscale(1) contrast(1.18) drop-shadow(0 25px 20px #000)}
+.map3d.zoomed{filter:grayscale(1) contrast(1.25) drop-shadow(0 25px 24px #000)}
+.country{fill:#303536!important;stroke:#bfc5c5!important;stroke-width:.85;filter:drop-shadow(0 2px 0 #090a0a) drop-shadow(0 4px 0 #171a1a) drop-shadow(0 7px 4px #000d)}
+.region[data-region="north"] .country,.region[data-region="west"] .country,.region[data-region="east"] .country,.region[data-region="south"] .country{fill:#303536!important}
+.region:hover .country,.region:focus .country{fill:#656b6b!important;stroke:#fff!important}
+.region.selected .country{fill:#777d7d!important;stroke:#fff!important}
+.region:focus,.region:focus-visible,svg g:focus,svg g:focus-visible{outline:0!important;box-shadow:none!important}
+svg{ -webkit-tap-highlight-color:transparent}
+.map-labels text{fill:#f0f0f0;stroke:#111;filter:grayscale(1)}
+.map-stage:before,.map-stage:after{opacity:.45;filter:grayscale(1) blur(.5px);background:radial-gradient(ellipse at 15% 90%,#555 0 4%,transparent 5%),radial-gradient(ellipse at 28% 75%,#303434 0 7%,transparent 8%),radial-gradient(ellipse at 43% 95%,#696e6e 0 6%,transparent 7%),radial-gradient(ellipse at 62% 78%,#333 0 8%,transparent 9%),radial-gradient(ellipse at 78% 92%,#555 0 7%,transparent 8%)}
+.question-area{border-color:#777;background:linear-gradient(145deg,#080909f2,#151717f2);color:#f2f2f2;box-shadow:0 18px 55px #000, inset 0 1px #fff2}
+.q-kicker{color:#d8dddd}.option{border-color:#555;background:#171919;color:#eee}.option:hover:not(:disabled){border-color:#eee;background:#292d2d}.option.correct{border-color:#ddd;background:#303535;color:#fff}.option.wrong{border-color:#999;background:#292323;color:#eee}.feedback.good,.feedback.bad{color:#eee}.reset{border-color:#777;color:#eee}.hint{color:#aaa}
+@media(max-width:700px){.map-stage{min-height:100vh}.map3d{width:min(720px,100%)}}
+
 </style></head><body>
 <header><div class="brand"><div class="symbol"><span>AF</span></div><strong>ATLAS // AFRICA</strong></div><div class="status">Sistema operacional • online</div></header>
 <main><div class="intro"><div><div class="eyebrow">Módulo de exploração geográfica</div><h1>Continente africano</h1></div><p>Selecione uma das quatro zonas. A região será destacada, elevada e recolhida para revelar o desafio histórico.</p></div>
